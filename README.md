@@ -1,10 +1,10 @@
-## Um programa em C++ para representação de grafos
+# Um programa em C++ para representação de grafos
 Representação por matriz de adjacências e por lista de adjacências.
 
-# Para compilar o programa:
+## Para compilar o programa:
 $ make
 
-# Para executar:
+## Para executar:
 $ ./graf1 arquivo.txt
 
 OBS.: os arquivos, ques estão dentro da pasta 'entradas', devem ser movidos
