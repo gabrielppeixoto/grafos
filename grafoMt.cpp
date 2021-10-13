@@ -47,21 +47,26 @@ bool verificaGrafoValoradoM(GrafoMt g)
     return false;
 }
 
-//Exporta saída no formato exigidos
-void exportarSaidaM(GrafoMt g)
+//Exporta saída no formato exigido
+void exportarSaidaM(GrafoMt g, int n, int m)
 {
     string s = "graph G\n{";
+    string pref = "di";
     string arqu;
+    string fim = "_" + to_string(n) + "_" + to_string(m) + ".dot";
     if(verificaGrafoValoradoM(g))
     {
         if(g->dirigido)
         {
+            pref += s;
+            s = pref;
             for(int i = 0; i < g->matriz.size(); i++)
             {
                 for(int j = 0; j < g->matriz[0].size(); j++)
                 {
                     if(g->matriz[i][j] != 0)
                     {
+                        
                         s += "\n\t";
                         s += to_string(i+1) + " -> " + to_string(j+1);
                         s += " [label = " + to_string(g->matriz[i][j]);
@@ -69,7 +74,7 @@ void exportarSaidaM(GrafoMt g)
                     }
                 }
             }
-            arqu = "digrafov_n_m.dot";
+            arqu = "digrafov";
         }
         else 
         {
@@ -88,26 +93,29 @@ void exportarSaidaM(GrafoMt g)
                     }
                 }
             }
-            arqu = "grafov_n_m.dot";
+            arqu = "grafov";
         }
     }
     else
     {
         if(g->dirigido)
         {
+            pref += s;
+            s = pref;
             for(int i = 0; i < g->matriz.size(); i++)
             {
                 for(int j = 0; j < g->matriz[0].size(); j++)
                 {
                     if(g->matriz[i][j] != 0)
                     {
+                        
                         s += "\n\t";
                         s += to_string(i+1) + " -> " + to_string(j+1);
                         s += ";";
                     }
                 }
             }
-            arqu = "digrafo_n_m.dot";
+            arqu = "digrafo";
         }
         else 
         {
@@ -125,10 +133,11 @@ void exportarSaidaM(GrafoMt g)
                     }
                 }
             }       
-            arqu = "grafo_n_m.dot";
+            arqu = "grafo";
         }
         
     }
+    arqu += fim;
     s += "\n}";
     ofstream file(arqu);
     file << s;

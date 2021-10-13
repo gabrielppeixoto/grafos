@@ -65,14 +65,18 @@ bool verificaGrafoValorado(GrafoLst g)
 }
 
 //Exporta saída no formato exigido
-void exportarSaidaL(GrafoLst g)
+void exportarSaidaL(GrafoLst g, int n, int m)
 {
     string s = "graph G\n{";
+    string pref = "di";
     string arqu;
+    string fim = "_" + to_string(n) + "_" + to_string(m) + ".dot";
     if(verificaGrafoValorado(g))
     {        
         if(g->dirigido)
         {
+            pref += s;
+            s = pref;
             for(Vertice i : g->vertices)
             {
                 for(Vizinho element : i->vizinhos)
@@ -83,7 +87,7 @@ void exportarSaidaL(GrafoLst g)
                     s += "];";
                 }
             }
-            arqu = "digrafov_n_m.dot";
+            arqu = "digrafov";
         }
         else
         {
@@ -97,13 +101,15 @@ void exportarSaidaL(GrafoLst g)
                     s += "];";
                 }
             }
-            arqu = "grafov_n_m.dot";
+            arqu = "grafov";
         }
     }
     else
     {
         if(g->dirigido)
         {
+            pref += s;
+            s = pref;
             for(Vertice i : g->vertices)
             {
                 for(Vizinho element : i->vizinhos)
@@ -113,7 +119,7 @@ void exportarSaidaL(GrafoLst g)
                     s += ";";
                 }
             }
-            arqu = "digrafo_n_m.dot";
+            arqu = "digrafo";
             }
         else 
         {
@@ -126,9 +132,10 @@ void exportarSaidaL(GrafoLst g)
                     s += ";";
                 }
             }
-            arqu = "grafo_n_m.dot";
+            arqu = "grafo";
         }
     }
+    arqu += fim;
     s += "\n}";
     ofstream file(arqu);
     file << s;

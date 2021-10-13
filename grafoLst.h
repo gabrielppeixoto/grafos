@@ -41,6 +41,6 @@ void inserirVerticeL(GrafoLst,Vertice);
 void conectarVerticesL(GrafoLst,int,int,int peso=0);
 void excluirGrafoL(GrafoLst);
 bool verificaGrafoValorado(GrafoLst);
-void exportarSaidaL(GrafoLst);
+void exportarSaidaL(GrafoLst,int,int);
 
 #endif

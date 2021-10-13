@@ -20,6 +20,6 @@ GrafoMt criarGrafoM(int,bool);
 void inserirArestaM(GrafoMt,int,int,int val=1);
 void excluirGrafoM(GrafoMt);
 bool verificaGrafoValoradoM(GrafoMt);
-void exportarSaidaM(GrafoMt);
+void exportarSaidaM(GrafoMt,int,int);
 
 #endif

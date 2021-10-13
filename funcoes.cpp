@@ -45,7 +45,7 @@ void tratarGrafoMatriz(string arquivo)
         vet2.clear();
     }
     readFile.close();
-    exportarSaidaM(g);
+    exportarSaidaM(g, numVertices, numArestas);
     excluirGrafoM(g);
 }
 
@@ -84,7 +84,6 @@ void tratarGrafoLista(string arquivo)
     {
         if(linha.at(0) == 'c')
             continue;
-        cout << linha << endl;
         stringstream st2(linha);
         while(getline(st2, interm, ' '))
         {
@@ -94,7 +93,7 @@ void tratarGrafoLista(string arquivo)
         vet2.clear();
     }
     readFile.close();
-    exportarSaidaL(g);
+    exportarSaidaL(g, numVertices, numArestas);
     excluirGrafoL(g);
 }
 
